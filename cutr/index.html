@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=windows-1252">
+    <link type="text/css" rel="stylesheet" href="../project.css">
+  <style>
+    table, th, td {
+    border: 1px solid black;
+    }
+  </style>
+    <title>Homepage for CUTR</title>
+  </head>
+  <body>
+    <div class="content">
+    <h1>CUTR: Concolic Unbounded-Thread Reachability</h1>
+    
+    <p>This page is the homepage of the CUTR tool. CUTR
+      implements the techniques presented in our paper [2].</p>
+    The document containing proofs can be found in 
+    <a href="./appendix.pdf">appendix.pdf</a>.
+    <br>
+    <h3>1. Download<br>
+    </h3>
+    <!--
+    <p> We currently distribute binaries of CUTR for 32-bit, 64-bit
+      Linux and (on request) 32-bit Windows. Additionally, in <a
+        href="./bws-src-1.0.tar.gz" download="bws-src-1.0.tar.gz">bws-src-1.0.tar.gz</a>
+      we distribute the source code of <b>our</b> BWS implementation,
+      which is based on Algorithm 3 --
+      Refined Backward Reachability -- in
+      [1] (Algorithm 1 in our paper). The binary is provided below.<br>
+    </p>
+    -->
+    <table id="crp-table">
+      <thead align="center">
+        <tr>
+          <th>Date</th>
+          <th>x86 Linux</th>
+          <th>x64 Linux</th>
+          <th>x86 Windows</th>
+          <th>Source Code</th>
+        </tr>
+      </thead>
+      <tbody align="center">
+        <tr>
+          <td class="centerText">May. 07, 2015</td>
+          <td class="centerText"><a href="./cutr-1.0-linux-x86.tar.gz"
+				    download="cutr-1.0-linux-x86.tar.gz">cutr-1.0-linux-x86.tar.gz</a>
+          </td>
+          <td class="centerText"><a href="./cutr-1.0-linux-x64.tar.gz"
+				    download="cutr-1.0-linux-x64.tar.gz">cutr-1.0-linux-x64.tar.gz</a>
+          </td>
+          <td class="centerText">on request</td>
+	  <td class="centerText"><a href="https://github.com/lpzun/cutr">cutr
+	      github</a></td>
+        </tr>
+        <tr>
+          <td class="centerText">May. 07, 2015</td>
+          <td class="centerText"> <a href="./bws-1.0-linux-x86.tar.gz"
+				     download="bws-1.0-linux-x86.tar.gz">bws-1.0-linux-x86.tar.gz</a>
+          </td>
+          <td class="centerText"> <a href="./bws-1.0-linux-x64.tar.gz"
+				     download="bws-1.0-linux-x64.tar.gz">bws-1.0-linux-x64.tar.gz</a>
+          </td>
+          <td class="centerText">on request</td>
+	  <td class="centerText"><a href="https://github.com/lpzun/bws">bws
+	      github</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <ul>
+      <li> The BWS implementation is based on Algorithm 3 --
+	Refined Backward Reachability -- in
+	[1] (Algorithm 1 in our paper). 
+      </li>
+    <li>We also distribute benchmarks used in our ICFEM 2016 submission <a
+        href="./icfem16.bm.tar.gz" download="icfem16.bm.tar.gz">here</a>.
+    </li>
+    </ul>
+
+    <h3>2. Installation<br></h3>
+
+    <h4>Install from source</h4>
+    <ol><start="1" type="a">
+      <li>git clone the github repository</li>
+      <li>make</li>
+    </ol>
+    <h4>Using the binaries</h4>
+    <ol start="1" type="a">
+      <li>Unpack the CUTR binary for your architecture, using the
+        tarball above.</li>
+      <li>Install the SMT solver <a href="https://github.com/Z3Prover/z3">z3</a>
+        library on your system. CUTR currently relies on z3 as the backend
+        solver.</li>
+      <li>Make sure CUTR finds z3 library. 
+      </li>
+    </ol>
+    <!--, an online version at <a
+      href="http://rise4fun.com/z3/tutorial/guide">RiSE4Fun</a>.-->
+    <h3>3. Tool use</h3>
+    For instructions on how to use CUTR, run the tool as follows:
+    <pre><code>./cutr -h [--help]</code></pre>
+    <h3>4. Example</h3>
+    The following is the toy example (toy-1.ttd in <a
+      href="./icfem16.bm.tar.gz" download="icfem16.bm.tar.gz">icfem16.bm.tar.gz</a>)
+    shown in our ICFEM 2016 submission in Fig. 1. The example has 7 shared
+    states 0..6 and 5 local state 0..4 :<br>
+    <pre>
+      7 5
+      0 0 -&gt; 1 1
+      1 0 -&gt; 2 1
+      2 0 -&gt; 3 1
+      3 1 -&gt; 1 2
+      3 2 -&gt; 4 3
+      4 2 -&gt; 5 4
+      5 4 -&gt; 6 3</pre>
+    <p>The target thread state ("bad state") whose reachability is
+      investigated in the example in the paper is (6,4), for an initial
+      thread state of (0,0).<br>
+    </p>
+    <h4>Checking program properties:</h4>
+    To check reachability of (6,4) in the example from above do
+    <pre><code>./cutr --input-file toy-1.ttd --target toy-1.prop</code></pre>
+    or
+    <pre><code>./cutr --input-file toy-1.ttd --target "6|4"</code></pre>
+    This will produce the output
+    <pre><code>Target thread state:(6|4)
+logical decision analysis is done!
+======================================================
+Target is unreachable: verification successful!
+======================================================</code></pre>
+    <p>Our system CUTR encodes this example into the following
+      Presburger formula, shown in Z3 syntax:</p>
+    <pre><code>(define-fun maxplus((x Int) (y Int) (b Int)) Int
+	(if (&gt; (+ x y) b)
+		(+ x y)
+		b))
+
+(declare-fun l1 () Int)
+
+(assert (&gt;= l1 0))
+(assert (= (maxplus (maxplus 1 (* l1 -1) 1) -3 0) 0))
+(assert (= (maxplus 2 (* l1 -1) 0) 0))
+(assert (= 0 0))
+(assert (= 1 0))
+(check-sat)
+(get-model)
+</code></pre>
+    <h3>5. Bug reporting</h3>
+    <p>Please send bug reports to <a
+        href="mailto:lpzun@ccs.neu.edu?Subject=CUTR%20Bug%20Reporting"
+        target="_top">us.</a><br>
+      <br>
+    </p>
+    <h3>References</h3>
+    <p>[1] Abdulla, P.A.: Well (and better) quasi-ordered transition
+      systems. Bulletin of Symbolic Logic 16(4), pp.457–515, 2010. </p>
+    <p>[2] Peizun Liu and Thomas Wahl, "Concolic Unbounded-Thread
+    Reachability via Loop Summaries". In ICFEM, pp.346-362, 2016.</p> 
+    </div>
+  </body>
+</html>

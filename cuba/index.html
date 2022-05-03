@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=windows-1252">
+    <link type="text/css" rel="stylesheet" href="../project.css">
+    <style>
+      /* Create two equal columns that floats next to each other */
+      .column {
+      float: left;
+      width: 45%;
+      padding: 10px;
+      /*height: 300px;  Should be removed. Only for demonstration */
+      }
+
+      /* Clear floats after the columns */
+      .row:after {
+      content: "";
+      display: table;
+      clear: both;
+      }
+
+      /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+      @media (max-width: 600px) {
+      .column {
+      width: 100%;
+      }
+      }
+    </style>
+  <style>
+    table, th, td {
+    border: 1px solid black;
+    }
+  </style>
+    <title>Homepage of CUBA</title>
+  </head>
+  <body>
+    <div class="content">
+    <h2>CUBA: Interprocedural Context-Unbounded Analysis of Concurrent Programs</h2>
+    This webpage describes the verification tool CUBA. You can find a working draft of our paper (to be appeared in <a href="https://conf.researchr.org/home/pldi-2018">PLDI'18</a>) <a href="./lw18-cuba-draft.pdf">here</a>.<br>
+    <h3>1. Download<br></h3>
+    <ul>
+      <li>Source code on <a href="https://github.com/lpzun/cuba">github</a>.</li>
+      <li>Binaries of CUBA for<br/>
+      </li>
+    </ul>
+    <table style="width:640px" align="center">
+      <thead align="center">
+        <tr>
+          <th>x86 Linux</th>
+          <th>x64 Linux</th>
+          <th>x64 Mac OSX</th>
+          <th>x86 Windows</th>
+        </tr>
+      </thead>
+      <tbody align="center">
+        <tr>
+          <td class="centerText">
+	    <a href="./cuba-1.0-linux-x86.tar.gz" download="cuba-1.0-linux-x86.tar.gz">cuba-1.0-linux-x86.tar.gz</a>
+          </td>
+          <td class="centerText">
+	    <a href="./cuba-1.0-linux-x64.tar.gz" download="cuba-1.0-linux-x64.tar.gz">cuba-1.0-linux-x64.tar.gz</a>
+          </td>
+          <td class="centerText">
+	    <a href="./cuba-1.0-mac-osx.tar.gz" download="cuba-1.0-mac-osx.tar.gz">cuba-1.0-mac-osx.tar.gz</a>
+          </td>
+          <td class="centerText">on request</td>
+        </tr>
+      </tbody>
+    </table>
+    <h3>2. Installation<br></h3>
+
+    <h4>Install from source</h4>
+    <ol start="1" type="a">
+      <li>git clone the github repository</li>
+      <li>make</li>
+    </ol>
+    <h4>Using the binaries</h4>
+    <ol start="1" type="a">
+      <li>Unpack the CUBA binary for your architecture, using the
+        tarball above.</li>
+      <li>Run it.</li>
+    </ol>
+    
+    <h3>3. Usage<br></h3>
+    Run the tool with the following command for explicit exploration:
+    <pre><code>./cuba -f [--input-file] arg  -i [--initial] arg -s C -x -all </code></pre>
+
+    Or the following command for symbolic exploration:
+    <pre><code>./cuba -f [--input-file] arg  -i [--initial] arg -s C -all </code></pre>
+
+    Or using the following command for help / more options:
+
+    <pre><code>./cuba -h [--help]</code></pre>
+    
+    <h4>More information:</h4>
+    <ul>
+      <li>More information can be found on <a
+					     href="https://github.com/lpzun/cuba/wiki">CUBA wiki</a></li>
+      <li>An <a href="https://github.com/lpzun/cuba/wiki/Tutorial">online tutorial</a></li>
+    </ul>
+
+    <h3>4. Benchmarks</h3>
+    <h4>Input Programs</h4>
+    <p>The direct input to CUBA are concurrent pushdown systems, a model
+      described in Section 3 of our paper. These systems are translated from concurrent
+      (recursive) Boolean programs.  We have
+      a front-end to do the translation. Correspondingly, Boolean programs are
+      obtained from concurrent C/C++ or Java programs by predicate
+      abstraction.
+    </p>
+    <h4>Example</h4>
+    <p>
+      The following is one example of CUBA input: the Boolean program (left)
+      and its translated pushdown system  (right).
+    </p>
+    <div class="row">
+      <div class="column">
+	<pre>
+// shared variable
+1 decl x;
+
+// Thread 1 will run foo
+ void foo() {
+2    if (*)
+3        foo();
+4    while (x) {
+     }
+5    x = true;
+ }
+
+// Thread 2 will run foo
+ void bar() {
+6    if (*)
+7        bar();
+8    while (!x) {
+     }
+9    x = false;
+ }
+
+// the entry of programs
+ void main() {
+10    create_thread(&foo);
+11    create_thread(&bar);
+ }
+	</pre>
+      </div>
+      <div class="column">
+	<pre>
+2 # shared state 0..1
+PDA 2 5 # a PDA converted from foo
+0 2 -> 0 3 # an overwrite action
+1 2 -> 1 3
+0 2 -> 0 4
+1 2 -> 1 4
+0 3 -> 0 2 4 # a push action
+1 3 -> 1 2 4
+0 4 -> 0 5
+1 4 -> 1 4
+0 5 -> 1 6
+1 5 -> 1 6
+0 6 -> 1 - # a pop action, "-" = empty
+1 6 -> 1 -
+PDA 6 9 #  a PDA converted from bar
+0 6 -> 0 7
+1 6 -> 1 7
+0 6 -> 0 8
+1 6 -> 1 8
+0 7 -> 0 6 8
+1 7 -> 1 6 8
+0 8 -> 0 8
+1 8 -> 1 9
+0 9 -> 0 10
+1 9 -> 0 10
+0 10 -> 0 -
+1 10 -> 0 -</pre>
+      </div>
+    </div>
+    <h4>Syntax</h4>
+    <p>The syntax of pushdown system is briefly summarized as follows (Please refer to the paper for more details):</p>
+    <ul>
+      <li><b>shared states:</b> the number <i>s</i> in the first non-commented line. It represents the set of shared states [<i>0...s-1</i>].</li>
+      <li><b>threads</b>: separated by notation <b>PDA</b>.</li>
+      <li><b>local states</b>: defined by two numbers after PDA. Let <i>l1, l2</i> be the numbers. Local states for this thread are [<i>l1...l2</i>].</li>
+      <li><b>actions</b>: there are three types. The pair <i>(s1, l1)</i> is the thread state before executing the action.
+	<ul>
+	  <li><i>s1 l1 -> s2 l2</i>: an overwrite action </li>
+	  <li><i>s1 l1 -> s2 l2 l3</i>: a push action</li>
+	  <li><i>s1 l1 -> s2 - </i>: a pop action: where notation "-" indicates an epsilon stack symbol</li>
+	</ul>
+      </li>
+      </ul>
+    <!--h4>Reproducing experimental results</h4>
+    Coming soon.
+    Here are some <a href="./cuba.bm.tar.gz" download="cuba.bm.tar.gz">benchmarks</a> that can be used to experiment with our tool. -->
+    
+    <h3>5. Technical Q & A<br></h3>
+    <ul>
+      <li><b>Q: Why checking generators is easier?</b></li>
+      <p> <b>A:</b>
+	The intuition is simply that we have more information about generators
+	(namely, their static characterization) than about arbitrary states.
+      </p>
+
+      <p>Second, we approximate the reachability of generators by approximating
+	the set Z of reachable visible states. The set of reachable generators is a
+	subset of Z. So the chance for Alg. 2 to converge deteriorates if "all
+	Z are checked". The rule is: <i><b>use the smallest set we can find that
+	contains all reachable generators.</b></i> Any larger test set is also sound, but
+	less likely to converge.
+      </p>
+      <li><b>Q: How to specify safety property?</b></li>
+      <p> <b>A:</b> A safety property is an assertion in the (Boolean) program which then
+	  represented as a set of visible states in the pushdown system.
+      </p>
+
+    </ul>
+    <!--<h3>6. Experiments<br></h3>
+	To evaluate CUBA, we collect a serise of multi-threaded program verification 
+	<a href="./cuba-tools.html">tools</a>, and compare against some of them. -->
+    <h3>6. Bug reporting<br></h3>
+    <p>Please send bug reports to <a
+				    href="mailto:lpzun@ccs.neu.edu?Subject=CUBA%20Bug%20Reporting"
+				    target="_top">us.</a><br>
+      <br>
+    </p>
+    </div>
+  </body>
+</html>

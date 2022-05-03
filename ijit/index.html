@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=windows-1252">
+    <link type="text/css" rel="stylesheet" href="../project.css">
+    
+    <title>IJIT: Interface for Just-In-Time translation</title>
+  </head>
+  <body>
+    <div class="content">
+      <h1>IJIT: Boolean Program Analysis with Just-in-Time Translation</h1>
+      This webpage describes how to download and use API IJIT.<br>
+      <h3>1. Download<br></h3>
+      <ul>
+	<li>Source code on <a
+			     href="https://github.com/lpzun/ijit">github</a></li>
+      </ul>
+
+      <h3>2. Installation<br></h3>
+      <ul>
+	<li>Assuming you have downloaded IJIT, then
+	  <pre><code> mkdir build<br> cd build<br> cmake ..<br> make<br> sudo make install</code></pre>
+	  By default, it will install IJIT
+	  library <code>DESTDIR/lib</code>, and include files at  <code>DESTDIR/include</code>, where <code>DESTDIR</code>
+	  installation prefix . It is usually <code>/usr</code> for most
+	  Linux distros, and <code>/usr/local</code> for FreeBSD and
+	  OS. Use the <code>DESTDIR=</code>command line option to change
+	  the install prefix. For example:
+	  <pre><code> make install DESTDIR="/your/path/"</code></pre>
+	</li>
+	<li>More information can be found on <a
+					       href="https://github.com/lpzun/ijit/wiki">IJIT wiki</a></li>
+</li>
+</ul> 
+
+<h3>3. Documentation<br></h3>
+<ul>
+  <li><a href="https://github.com/lpzun/ijit/wiki/Documentation">API documentation</a></li>
+</li>
+</ul>
+
+<h3>4. Tutorials<br></h3>
+<ul>
+  <li><a href="https://github.com/lpzun/ijit/wiki/Tutorial">Online Tutorial</a></li>
+</li>
+</ul>
+
+<h3>5. Benchmarks<br></h3>
+Here are some <a href="./ijit.bm.tar.gz" download="ijit.bm.tar.gz">benchmarks</a> that can be used to experiment with our API. 
+
+<h3>6. Bug reporting<br></h3>
+<p>Please send bug reports to <a
+				href="mailto:lpzun@ccs.neu.edu?Subject=IJIT%20Bug%20Reporting"
+				target="_top">us.</a><br>
+  <br>
+</p>
+</div>
+</body>
+</html>

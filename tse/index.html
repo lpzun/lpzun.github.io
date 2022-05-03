@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    </style>
+    <meta http-equiv="content-type" content="text/html; charset=windows-1252">
+    <link type="text/css" rel="stylesheet" href="../project.css">
+    <title>TSE</title>
+  </head>
+  <body>
+    <div class="content">
+    <h1>Unbounded-Thread Program Verification using Thread-State Equations</h1>
+    This webpage describes how to download and use the TSE tool that
+    implements the above technique. Thanks to <a href="https://www.ccis.northeastern.edu/people/konstantinos-athanasiou/">Konstantinos</a> for helping to design this website.<br>
+    <h3>1. Download<br>
+    </h3>
+    <ul>
+      <li>Source code on <a
+        href="https://github.com/lpzun/ctse">github</a></li>
+      <li>Binaries of TSE for 
+      <a
+         href="./tse-1.0-linux-x86.tar.gz" download="tse-1.0-linux-x86.tar.gz">32bit</a>,
+      <a
+         href="./tse-1.0-linux-x64.tar.gz" download="tse-1.0-linux-x64.tar.gz">64bit</a>
+      Linux
+      </li>
+    </ul>
+    <h3>2. Installation<br>
+    </h3>
+    <h4>Dependencies</h4> Install the SMT solver
+    <a href=https://github.com/Z3Prover/z3>z3</a> on your system. TSE
+    currently relies on z3 as the backend solver.
+    <h4>Install from source</h4>
+    <ol><start="1" type="a">
+      <li>git clone the github repository</li>
+      <li>make</li>
+    </ol>
+    <h4>Using the binaries</h4>
+    <ol> <start="1" type="a">
+      <li>Unpack the TSE binary for your architecture, using the
+        tarball above.</li>
+      <li>Make sure TSE finds z3 library. 
+    </ol>
+      </li>
+    </ol>
+    <h3>3. Tool use</h3>
+    For instructions on how to use TSE, run the tool as follows:
+    <pre><code>./tse -h [--help]</code></pre>
+<h3>4. Reproducing experimental results</h3>
+<p>A
+  <a href="./results.xlsx" download="results.xlsx">summary</a>
+  of our results on 
+  <a href="./ijcar16.bm.tar.gz" download="ijcar16.bm.tar.gz">this</a>
+  benchmark suite. To convert TTS to Petri Nets we have used both the
+  original implementaion of ttstrans
+  found <a href="http://www.cprover.org/bfc/#DOWNLOAD">here</a>, and
+  an <a href="https://github.com/pierreganty/bfc_fork/commit/9560d018cbabb6043c1e80465917a41c678dabc6">implementation</a>
+  by Pierre Ganty. We compare against the following
+  coverability checkers:
+</p>
+  <ul>
+    <li>BFC version 2.0.2,
+    available <a href="http://www.cprover.org/bfc/#DOWNLOAD">here</a>.
+    </li>
+    <li>Petrinizer and IIC, available
+      <a href="https://www.mpi-sws.org/~fniksic/cav2014/repository.tgz"  download="https://www.mpi-sws.org/~fniksic/cav2014/repository.tgz">here</a>
+    <li>
+      The eec and ic4pn algorithms of
+<a href="https://github.com/pierreganty/mist/tree/ff956a03196ab908833698b39333f21fbe53fd05">this</a>
+github release of MIST.
+    </li>
+  </ul>
+  
+
+
+
+    <h3>5. Bug reporting</h3>
+    <p>Please send bug reports to <a
+        href="mailto:lpzun@ccs.neu.edu?Subject=TSE%20Bug%20Reporting"
+        target="_top">us.</a><br>
+      <br>
+    </p>
+    </div>
+  </body>
+</html>

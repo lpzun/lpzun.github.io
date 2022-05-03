@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=windows-1252">
+    <link type="text/css" rel="stylesheet" href="../project.css">
+  <style>
+    table, th, td {
+    border: 1px solid black;
+    }
+    .indented {
+    padding-left: 18pt;
+    padding-right: 5pt;
+    }
+  </style>
+    <title>Thesis Proposal</title>
+  </head>
+  <body>
+    <div class="content">
+    <h1 align="center">Peizun Liu's PhD Thesis Proposal</h1>
+    <h3>1. Thesis Proposal<br></h3>
+    <p class="indented">
+      <a href="">Resource-Parameterized Program Analysis using Observation Sequences</a>
+    </p>
+    <h4 class="indented">Abstract:</h4>
+    <p class="indented">
+      Most programs are naturally designed over a variable number
+      of <i>discrete resources</i>, which can be either physical
+      components like threads or logical entities like context
+      switches. Such a resource is typically parametric, where the
+      value of the parameter varies across different execution
+      environments and is unknown at design time. We call such
+      programs <i>resource-parameterized</i>. Although highly desirable,
+      formally analyzing resource-parameterized programs for various
+      error conditions is notoriously hard or even
+      undecidable. Some existing research imposes bounds on certain
+      resources, such as the number of available execution threads or
+      thread contexts, to tackle the intractability or sidestep the
+      undecidability of the analysis. This leads to a series of
+      incomplete techniques that are believed to catch “most bugs” in
+      practice. The question whether these techniques can also <i>prove</i>
+      the absence of bugs, however, has remained largely open. 
+    </p>
+    <p class="indented">
+      We address this question by introducing a broad verification
+      methodology, the paradigm of <i>observation sequences</i>, for
+      resource-parameterized programs. The verification is conducted by
+      observing how changes to the resource parameter affect the behavior of
+      the considered program. Applied to the undecidable problem of
+      context-parameterized analysis for procedural concurrent programs, the
+      paradigm results in partial verification techniques: they may not
+      terminate, but are able to both refute and prove safety for concurrent
+      recursive threads. Experiments have shown the effectiveness of our
+      techniques. The paradigm of observation sequences is designed with
+      generality in mind. In this proposal, we plan to explore two more
+      instances: one is the <i>queue-parameterized analysis</i> for message-passing
+      programs which communicate via queued messages; the other is
+      <i>access-parameterized analysis</i> for shared-memory multithreaded
+      programs. Both generalizations are supported by tool development and
+      empirical evaluation. 
+    </p>
+
+    <h3>2. Thesis Committee<br></h3>
+    <ul>      
+      <li>
+	<a href="https://www.microsoft.com/en-us/research/people/akashl/">Akash Lal</a> (External Member, Microsoft Research India)
+      </li>      
+      <li>
+	<a href="http://www.ccs.neu.edu/home/crisn/">Cristina Nita-Rotaru</a>
+      </li>
+      <li>
+	<a href="http://janvitek.org/">Jan Vitek</a>
+      </li>
+      <li>
+	<a href="http://www.ccs.neu.edu/home/wahl/">Thomas Wahl</a> (Thesis Advisor)
+      </li>
+    </ul>
+    
+    <h3>3. Advisor's Statement on Selection of Thesis Committee<br></h3>
+    <p class="indented">
+      Thomas Wahl is Peizun Liu's PhD thesis advisor ...
+    </p>
+    <p class="indented">
+      -- Prof. Thomas Wahl
+    </p>
+
+    
+  </body>
+</html>

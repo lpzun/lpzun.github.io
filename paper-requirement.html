@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+	p.serif{font-family:"Times New Roman",Times,serif;}
+	p.sansserif{font-family:Arial,Helvetica,sans-serif;}
+    </style>
+    <style type="text/css">
+      pre {
+      border: 1px solid #ccc;
+      word-wrap: break-word;
+      padding: 6px 10px;
+      line-height: 19px;
+      margin-bottom: 20px;
+      font-family: "Times New Roman",Times,serif;
+      font-size: 11px;
+      }
+
+      code {
+      border: 1px solid #eaeaea;
+      margin: 0px 2px;
+      padding: 0px 5px;
+      font-size: 12px;
+      }
+
+      pre code {
+      border: 0px;
+      padding: 0px;
+      margin: 0px;
+      -moz-border-radius: 0px;
+      -webkit-border-radius: 0px;
+      border-radius: 0px;
+      }
+
+      pre, code {
+      font-family: Consolas, 'Liberation Mono', Courier, monospace;
+      color: #333;
+      background: #f8f8f8;
+      -moz-border-radius: 3px;
+      -webkit-border-radius: 3px;
+      border-radius: 3px;
+      }
+
+      pre, pre code {
+      font-size: 13px;
+      }
+
+      pre .comment {
+      color: #998;
+      }
+
+      pre .support {
+      color: #0086B3;
+      }
+
+      pre .tag, pre .tag-name {
+      color: navy;
+      }
+
+      pre .keyword, pre .css-property, pre .vendor-prefix, pre .sass, pre .class, pre .id, pre .css-value, pre .entity.function, pre .storage.function {
+      font-weight: bold;
+      }
+
+      pre .css-property, pre .css-value, pre .vendor-prefix, pre .support.namespace {
+      color: #333;
+      }
+
+      pre .constant.numeric, pre .keyword.unit, pre .hex-color {
+      font-weight: normal;
+      color: #099;
+      }
+
+      pre .entity.class {
+      color: #458;
+      }
+
+      pre .entity.id, pre .entity.function {
+      color: #900;
+      }
+
+      pre .attribute, pre .variable {
+      color: teal;
+      }
+
+      pre .string, pre .support.value  {
+      font-weight: normal;
+      color: #d14;
+      }
+
+      pre .regexp {
+      color: #009926;
+      }
+    </style>
+    <style type="text/css">
+      .centerText{
+      text-align: center;
+      }
+    </style>
+    <style>
+      .list_indent p {
+      text-indent: 26px;
+      }
+    </style>
+    <meta http-equiv="content-type" content="text/html;
+      charset=windows-1252">
+    <title>Peizun Liu: PhD Paper Requirement</title>
+  </head>
+  <body>
+    <h1></h1>
+    <!-- this should go in your <head> -->
+    <link href="./github.css" rel="stylesheet" type="text/css">
+    <!--This webpage provides a link to download the benchmarks we use in above tool UCOB. -->
+    <h3>Title<br></h3>
+    <div class="list_indent">
+      <p> Infinite-State Backward Exploration of Boolean Broadcast
+      Programs </p>
+    </div>
+    <!-----------------------------authors info-------------------------------------->
+    <h3>Authors<br></h3>
+    <div class="list_indent">
+      <p>Peizun Liu and Thomas Wahl</p>
+   </div>
+    <!-----------------------------Abstract info------------------------------------->
+    <h3>Abstract<br></h3>
+        <p>Assertion checking for non-recursive unbounded-thread Boolean
+	programs can be performed in principle by converting the program
+	into an infinite-state transition system such as a Petri net and
+	subjecting the system to a <i>coverability</i> check, for which sound and
+	complete algorithms exist. Said conversion adds, however, an
+	additional heavy burden to these already expensive algorithms, as
+	the number of system states is exponential in the size of the
+	program. Our solution to this problem avoids the construction of a
+	Petri net and instead applies the coverability algorithm directly
+	to the Boolean program. A challenge is that, in the presence of
+	advanced communication primitives such as broadcasts, the
+	coverability algorithm proceeds backwards, requiring a backward
+	execution of the program. The benefit of avoiding the up-front
+	transition system construction is that "what you see is what you
+	pay": only system states backward-reachable from the target state
+	are generated, often resulting in dramatic savings. We demonstrate
+	this using Boolean programs constructed by the SATABS predicate
+	abstraction engine.</p>
+    <!--------------------------Publication Details---------------------------------->
+    <h3>Publication Details<br></h3>
+    <div class="list_indent">  
+      <p><b>Conference:</b> The 14th Conference on Formal Methods in
+      Computer-Aided Design (FMCAD 2014) </p>
+      <p><b>Conference
+      Homepage:</b> <a href="http://www.cs.utexas.edu/users/hunt/FMCAD/FMCAD14/index.shtml">FMCAD
+      2014</a></p>
+      <p><b>Acceptance Rate:</b> 37% (for full papers; across all categories: 40%)</p>
+      <p><b>Full Paper:</b> <a href="./paper.pdf"
+              download="paper.pdf">PDF</a></p>
+    </div>
+   <!--------------------------Advisor's Statement---------------------------------->
+    <h3>Advisor's Statement<br></h3>
+    <p>This paper is the result of work developed over the course of
+    about two years. It targets the goal of closing the gap between
+    theory and practice in verification, by demonstrating how
+    theoretically powerful concurrency models such as Petri nets can
+    be connected with little overhead to more practical formalisms
+    such as (abstract) programming languages.</p>
+
+      <p>Initially the project was in the hands of a Ph.D. student that
+      has, in the meantime, left the program. After a transitional
+      period of joint work between Peizun and that former student of
+      mine, Peizun took over the work entirely. At that time the
+      project was in a most preliminary stage, consisting of only a
+      very naive algorithmic approach.</p>
+
+      <p>With guidance by me, Peizun developed many of the technical
+      ideas that lead to the proposed solution. He conducted the
+      experimental evaluation largely by himself; my role was limited
+      to high-level suggestions of what should be compared, and
+      how. Peizun still has some difficulties presenting technical
+      results in clear and unambiguous English; I thus helped with the
+      writing.<p/>
+
+      <p>A somewhat preliminary report of this work was accepted to the
+      FMCAD "<a href="http://www.cs.utexas.edu/users/hunt/FMCAD/FMCAD13/student-forum.shtml">Student
+      Forum</a>" one year ago (the report was not formally
+      published); Peizun presented it in a short talk. The full
+      version was then presented by Peizun at this year's FMCAD in a
+      standard 30min slot; I helped with the design of the slides, and
+      with streamlining the presentation.</p>
+
+      <p>The paper ranks better in FMCAD than the (relatively high)
+      overall acceptance rate seems to suggest; we are happy to
+      provide the reviewers' comments if requested by the
+      committee.</p>
+      
+      <p align="right">Thomas Wahl &nbsp;&nbsp;&nbsp;&nbsp;</p>
+  </body>
+</html>

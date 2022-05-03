@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Peizun Liu - Homepage</title>
+    <meta name="viewport" content="width=device-width"/>
+    <meta name="description" content="The Homepage of Peizun Liu."/>
+    <meta charset="UTF-8">
+
+    <link type="text/css" rel="stylesheet" href="style.css">
+    <link href='http://fonts.googleapis.com/css?family=Rokkitt:400,700|Lato:400,300' rel='stylesheet' type='text/css'>
+  </head>
+  <body id="top">
+    <div id="cv">
+      <div class="mainDetails">
+	<div id="headshot">
+	  <img src="./images/me.jpeg" alt="Peizun Liu" />
+	</div>
+	
+	<div id="name">	  
+	  <h1 class="name">Peizun Liu <br/></h1>
+	  <h3>PhD Candidate @ Computer Science</h3>
+	  <br/>
+	  <p>
+	    <ul class="jump-bar">
+	      <li><a href="./data/cv.pdf">CV</a></li>
+	      <li>·</li>
+	      <li><a href="https://github.com/lpzun">Github</a></li>
+	      <li>·</li>
+	      <li><a href="https://www.linkedin.com/in/peizunliu">Linkedin</a></li>
+	    </ul>
+	  </p>
+	</div>
+	
+	<div id="contactDetails">
+	  <ul>
+	    <a href="https://www.khoury.northeastern.edu/">Khoury College of Computer Sciences</a><br/>
+	    <a href="http://www.northeastern.edu/">Northeastern University</a><br/>
+	    440 Huntington Avenue<br/>
+	    Boston, Massachusetts 02115<br/>
+	    <br/>
+	    <table>
+	      <tr><b><td>Office:</td><td>208 West Village H</td></b></tr>
+	      <tr><td>Email:</td> <td><a href="mailto:lpzun@ccs.neu.edu">lpzun@ccs.neu.edu</a></td></tr>
+	    </table>
+	  </ul>
+	</div>
+	<div class="clear"></div>
+      </div>
+      
+      <div id="mainArea">
+	<section>
+	  <div class="sectionTitle">
+	    <h1>About Me</h1>
+	  </div>
+	  
+	  <div class="sectionContent">
+	    <article>
+	      <p>I am a Computer Science Ph.D. student at
+		<a href="https://www.khoury.northeastern.edu/">Khoury college</a>
+		and a member of Formal Methods group.
+		Before joining Northeastern, I graduate with a Master's degree in Software
+		Engineering from Tsinghua University and a Bachelor's degree in
+		Information Management & Information System from Chengdu University of Technology.</p>
+	    </article>
+	    <article>
+	      <h2>Advisor</h2>
+	      <p>My Ph.D. advisor is <a href="http://www.ccs.neu.edu/home/wahl/">Prof. Thomas Wahl.</a></p>
+	    </article>
+	  </div>
+	  <div class="clear"></div>
+	</section>
+	<section>
+	  <div class="sectionTitle">
+	    <h1>News</h1>
+	  </div>
+	  <div class="sectionContent">
+	    <article>
+	      <ul>
+		<li>Our paper <b><i>Verifying Asynchronous Event-Driven Programs using Partial Abstract Transformers</i></b> is accepted by <a href="http://i-cav.org/2019/">CAV</a>.</li><br>
+		<li>I am interning at <a href="https://www.mathworks.com/">MathWorks</a> this summer. My work is to formally reason about simulink models.</li>
+		<!--
+		<li>Our CUBA work (see below) is accepted by <a href="https://pldi18.sigplan.org/track/pldi-2018-papers#Conditionally-Accepted-Papers"><font color="red">PLDI'18</font></a>. </li>
+	-->
+	      </ul>
+	    </article>
+			      </br>
+	  </div>
+	  <div class="clear"></div>
+</sectio>
+
+<section>
+  <div class="sectionTitle">
+    <h1>Research</h1>
+  </div>
+  
+  <div class="sectionContent">
+    <article>
+      <h2>Research Interests</h2>
+      <!--p>My research interests are
+	  <b>program analysis</b> and
+	  <b>verification</b>. My current work
+	  is focused on formally analyzing concurrent
+	  programs. This work is based
+	  on concurrent Boolean
+	  programs, i.e., programs
+	  resulting from applying
+	  predicate abstraction to
+	  general concurrent software,
+	  and that consist of procedures
+	  intended to be run by many
+	  threads in parallel.</p-->
+
+      <p>My research interests are program analysis and formal
+      verification. The goal of my research is to improve the
+      reliability of various types of software, especially the
+      critical system software, device drivers, etc. My recent work
+      focuses on formally analyzing concurrent programs, distributed
+      programs, etc.</p> 
+    </article>
+    <article>
+      <h2>Projects</h2>
+      <p>Please find more details for each project in its
+      corresponding project webpage.</p>
+      <p>
+	<ul>
+	  <li><h3>Resource-Parameterized Program Analysis</h3>
+	    <p>Resource-parameterized programs are omnipresent as the
+	    majority of programs including critical ones are naturally
+	    designed, intentionally or not, over a variable number of
+	    certain resources. Although highly desirable, formally
+	    analyzing said programs are notoriously hard or even
+	    intractable in many cases. Resource bounds are thus
+	    imposed to ensure the tractability of the analysis, and
+	    lead to a series of incomplete techniques in turn that
+	    are, however, believed to catch "most bugs" in
+	    practice. The question whether these techniques can also
+	    prove the absence of bugs at least in some cases has
+	    remained largely open.</p> 
+	    
+	    <p>We address this question by introducing a broad verification
+	    methodology for resource-parameterized programs that
+	    observes how changes to the resource parameter affect the
+	      behavior of the program. We call our methodology as
+	      observation sequences. This is an ongoing project.</p>
+
+	    
+	    <h4>1. Context-unbounded analysis (CUBA) </h4></br>
+	      <p>We have applied the observation sequences to the undecidable problem of
+	    context-unbounded reachability analysis for multithreaded
+	    shared-memory recursive
+	    programs. See <a href="./cuba/">CUBA</a> for more 
+	    details.</p>
+
+	   <h4>2. Queue-unbounded analysis (QUBA)</h4></br>
+	      <p>Recently, we applied the observation sequences to the
+	    queue-unbounded reachability analysis for asynchronous
+	    event-driven programs. Those programs communicate via
+	    unbounded FIFO message queues. We evaluate our approach on
+	    a set of benchmark programs written
+	    in <a href="https://github.com/p-org/P/wiki/Introduction-to-P-language">P
+	    language</a>. The work will be out soon. Email me for a
+	    draft if you are interested.  
+	    
+	  </li>
+	  <br/>
+	  <li><h3>Parameterized Verification</h3>
+	    <h4>1. Reachability analysis for abstract Boolean programs with just-in-time translation</h4>
+				      </br>
+	    <p>
+	      We apply the just-in-time
+	      translation idea to a well-known infinite-state backward reachability analysis algorithm to avoid the state space explosion usually cased by static translation.
+	      This is the project 
+	      <a href="./ucob/">UCOB</a>. Then, we extend the idea by providing an API <a href="./ijit/">IJIT</a>
+	      to help users to adjust their transition system based algorithms / tools to algorithms
+	      / tools operating on Boolean programs directly.</p>
+	    
+	    <h4>2. Symbolic analysis for unbounded-thread programs</h4>
+				      </br>
+	    <p>We encode reachability questions in a way that makes it expressible compactly as a Presburger arithmetic formulae. Then, we feed the formulae to a SMT solver, e.g. Z3, to approximate the reachability. More details in <a href="./cutr/">CUTR</a>, <a href="./tse/">TSE</a>.</p>
+	  </li>
+	</ul>
+      </p>
+    </article>
+  </div>
+  <div class="clear"></div>
+</section>
+
+<section>
+  <div class="sectionTitle">
+    <h1>Publications</h1>
+  </div>
+  
+  <div class="sectionContent">
+    <article>
+      <ol type="1">
+      	<li>
+      		Peizun Liu, Thomas Wahl and Akash Lal, "Verifying Asynchronous Event-Driven Programs Using Partial Abstract Transformers". To appear in <i>CAV</i>, 2019.
+      		[<a href="https://arxiv.org/abs/1905.09996">Preprint</a>]
+      	</li><br>
+	<li> Peizun Liu and Thomas Wahl, “CUBA: Interprocedural Context-Unbounded Analysis of Concurrent Programs”. In <i>PLDI</i>, pp.105-119, 2018.
+	  [<a href="./cuba/lw18.pdf">PDF</a>|<a href="./data/cuba_poster.pdf">Poster</a>|<a href="./cuba/">Artifact</a>]
+	</li><br>
+
+	<li> Peizun Liu and Thomas Wahl, “IJIT: An API for Boolean Program Analysis with Just-in-Time Translation”. In <i>SEFM</i>, pp.316-331, 2017.
+	  [<a href="https://arxiv.org/pdf/1706.03167.pdf">PDF</a>|<a href="./data/lw17.pdf">Slides</a>|<a href="./ijit/">Artifact</a>]
+	</li><br>
+	
+	<li> Peizun Liu and Thomas Wahl, "Concolic Unbounded-Thread Reachability via Loop Summaries". In <i>ICFEM</i>, pp.346-362, 2016.			  
+	  [<a href="https://arxiv.org/pdf/1607.08273.pdf">PDF</a>|<a href="./data/lw16.pdf">Slides</a>|<a href="./cutr/">Artifact</a>]
+	</li><br>
+	
+	<li> Konstantinos Athanasiou,
+	  Peizun Liu and Thomas Wahl, "Unbounded-Thread Program Verification using Thread-State Equations". In <i>IJCAR</i>, pp. 516-531,
+	  2016. [<a href="http://link.springer.com/chapter/10.1007%2F978-3-319-40229-1_35">PDF</a>|<a href="./data/alw16.pdf">Slides</a>|<a href="./tse/">Artifact</a>].
+	</li><br>
+	
+	<li> Peizun Liu and Thomas Wahl,
+	  "Infinite-State Backward Exploration
+	  of Boolean Broadcast Programs". In <i>FMCAD</i>, pp.155-162,
+	  2014. [<a href="http://www.cs.utexas.edu/users/hunt/FMCAD/FMCAD14/proceedings/26_liu.pdf">PDF</a>|<a href="http://www.cs.utexas.edu/users/hunt/FMCAD/FMCAD14/slides/liu_wahl.pdf">Slides</a>|<a href="./ucob/">Artifact</a>]
+	</li>
+      </ol>
+  </div>
+  <div class="clear"></div>
+</section>
+
+<div class="sectionContent">
+</div>
+<div class="clear"></div>
+</section>
+
+<section>
+  <div class="sectionTitle">
+    <h1>Teaching</h1>
+  </div>
+  
+  <div class="sectionContent">
+    <p>I have been teaching the following classes (as a head TA):
+      <ul>
+	<li><a href="https://course.ccs.neu.edu/cs2800sp17/contact.html">Logic and Computation CS 2800 Spring 2017</a></li>
+	<li><a href="http://www.ccs.neu.edu/home/pete/courses/Logic-and-Computation/2016-Spring/contact.html">Logic and Computation CS 2800 Spring 2016</a></li>
+	<li><a href="http://www.ccs.neu.edu/home/wahl/Teaching/Logic-and-Computation/2015-fall/contact.html">Logic and Computation CS 2800 Fall 2015</a></li>
+      </ul>
+			    </br>
+    </p>
+  </div>
+  <div class="clear"></div>
+</section>	
+
+<section>
+  <div class="sectionTitle">
+    <h1>Activities</h1>
+  </div>
+  
+  <div class="sectionContent">
+    <article>
+      <h2>Conference PC member:</h2>
+      <a href="https://www.iaria.org/conferences2018/ICSEA18.html">ICSEA 2018</a>,
+      <a href="https://www.iaria.org/conferences2017/ICSEA17.html">ICSEA 2017</a>
+			      </br>
+			      </br>
+		              <h2>Conference reviewing:</h2>
+      <p>CAV 2018, VMCAI 2018, CAV 2017, 
+	FMCAD 2017, CAV 2015, CAV 2014, FMCAD 2014, DATE 2014, CAV 2013,
+	FMCAD 2013, DATE 2013</p>
+    </article>
+  </div>
+  <div class="clear"></div>
+</section>
+
+<section>
+  <div class="sectionTitle">
+    <h1>This Site</h1>
+  </div>
+  
+  <div class="sectionContent">
+    <article>
+      <p>Design borrowed in part
+	from: <a href="http://www.ccs.neu.edu/home/wahl/">Prof. Thomas
+	  Wahl </a> and <a href="http://www.thomashardy.me.uk/cv/">Thomas Hardy</a>.</p>
+    </article>
+  </div>
+  <div class="clear"></div>
+</section>
+</div>
+</div>
+</body>
+</html>
