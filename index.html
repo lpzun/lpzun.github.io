@@ -128,43 +128,8 @@
       <p>
 	<ul>
 	  <li><h3>Resource-Parameterized Program Analysis</h3>
-	    <p>Resource-parameterized programs are omnipresent as the
-	    majority of programs including critical ones are naturally
-	    designed, intentionally or not, over a variable number of
-	    certain resources. Although highly desirable, formally
-	    analyzing said programs are notoriously hard or even
-	    intractable in many cases. Resource bounds are thus
-	    imposed to ensure the tractability of the analysis, and
-	    lead to a series of incomplete techniques in turn that
-	    are, however, believed to catch "most bugs" in
-	    practice. The question whether these techniques can also
-	    prove the absence of bugs at least in some cases has
-	    remained largely open.</p> 
-	    
-	    <p>We address this question by introducing a broad verification
-	    methodology for resource-parameterized programs that
-	    observes how changes to the resource parameter affect the
-	      behavior of the program. We call our methodology as
-	      observation sequences. This is an ongoing project.</p>
-
-	    
-	    <h4>1. Context-unbounded analysis (CUBA) </h4></br>
-	      <p>We have applied the observation sequences to the undecidable problem of
-	    context-unbounded reachability analysis for multithreaded
-	    shared-memory recursive
-	    programs. See <a href="./cuba/">CUBA</a> for more 
+	    <p>See <a href="https://lpzun.github.io/rapa/">RAPA</a> for more 
 	    details.</p>
-
-	   <h4>2. Queue-unbounded analysis (QUBA)</h4></br>
-	      <p>Recently, we applied the observation sequences to the
-	    queue-unbounded reachability analysis for asynchronous
-	    event-driven programs. Those programs communicate via
-	    unbounded FIFO message queues. We evaluate our approach on
-	    a set of benchmark programs written
-	    in <a href="https://github.com/p-org/P/wiki/Introduction-to-P-language">P
-	    language</a>. The work will be out soon. Email me for a
-	    draft if you are interested.  
-	    
 	  </li>
 	  <br/>
 	  <li><h3>Parameterized Verification</h3>
